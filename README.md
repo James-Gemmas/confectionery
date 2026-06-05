@@ -1,24 +1,37 @@
-# README
+Кондитерская Sweet Date
+Веб-приложение для заказа тортов с доставкой к определённой дате.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Как работает сайт
+Для обычного пользователя
+1.Регистрация или вход по email и паролю.
+2.Просмотр каталога тортов: название, описание, цена, вес, вид торта, фотография.
+3.Добавление тортов в корзину.
+4.Переход в корзину, выбор даты доставки, оформление заказа.
+5.Просмотр истории своих заказов и их статусов (в обработке, оплачен, доставлен и т.д.).
 
-Things you may want to cover:
+Для администратора
+1.Вход в панель управления по адресу /admin.
+      Логин: admin@mail.ru
+      Пароль: 12345678
+2.Управление товарами: добавление, редактирование, удаление, загрузка фотографий.
+3.Управление заказами: просмотр всех заказов, изменение статуса заказа.
+4.Просмотр списка пользователей и комментариев.
 
-* Ruby version
+Технологии
 
-* System dependencies
+Ruby on Rails
+База данных SQLite (разработка)
+ActiveStorage для загрузки картинок
+Devise для входа и регистрации
+ActiveAdmin для панели администратора
 
-* Configuration
+Запуск проекта
+Склонировать репозиторий
 
-* Database creation
+Выполнить bundle install
 
-* Database initialization
+Выполнить rails db:create db:migrate
 
-* How to run the test suite
+Запустить rails server
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Открыть localhost:3000
