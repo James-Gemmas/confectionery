@@ -1,0 +1,10 @@
+<h1>Наши торты</h1>
+<% @products.each do |product| %>
+  <div style="border:1px solid #ccc; margin:10px; padding:10px;">
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+    <p>Цена: <%= product.price %> руб.</p>
+    <%= button_to 'В корзину', cart_path(product_id: product.id, quantity: 1), method: :patch %>
+  </div>
+<% end %>
+<p><%= link_to 'Корзина', cart_path %> | <%= link_to 'Мои заказы', orders_path %></p>

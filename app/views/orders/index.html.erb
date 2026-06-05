@@ -1,0 +1,17 @@
+<h1>Мои заказы</h1>
+<% if @orders.empty? %>
+  <p>У вас пока нет заказов.</p>
+<% else %>
+  <% @orders.each do |order| %>
+    <div style="border:1px solid gray; margin:10px; padding:10px;">
+      <p>Заказ № <%= order.id %>, дата доставки: <%= order.delivery_date %>, статус: <%= order.status %></p>
+      <p>Сумма: <%= order.total_price %> руб.</p>
+      <ul>
+        <% order.order_items.each do |item| %>
+          <li><%= item.product.name %> x <%= item.quantity %> = <%= item.price_at_time * item.quantity %> руб.</li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<% end %>
+<p><%= link_to 'На главную', root_path %></p>

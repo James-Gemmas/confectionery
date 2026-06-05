@@ -1,0 +1,22 @@
+<h1>Корзина</h1>
+<% if session[:cart].blank? || session[:cart].empty? %>
+  <p>Корзина пуста</p>
+<% else %>
+  <ul>
+    <% session[:cart].each do |product_id, quantity| %>
+      <% product = Product.find(product_id) %>
+      <li><%= product.name %> x <%= quantity %> = <%= product.price * quantity %> руб.
+        <%= button_to 'Удалить', cart_path(product_id: product_id, quantity: 0), method: :patch %>
+      </li>
+    <% end %>
+  </ul>
+  <p><strong>Итого: </strong><%= session[:cart].sum { |pid, qty| Product.find(pid).price * qty } %> руб.</p>
+  <h2>Оформление заказа</h2>
+  <%= form_with url: orders_path, method: :post do |f| %>
+    <%= f.label :delivery_date, 'Дата доставки' %>
+    <%= f.date_field :delivery_date, required: true %>
+    <%= f.submit 'Оформить заказ' %>
+  <% end %>
+  <%= button_to 'Очистить корзину', cart_path, method: :delete %>
+<% end %>
+<p><%= link_to 'На главную', root_path %></p>
